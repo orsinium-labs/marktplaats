@@ -1,2 +1,2 @@
-https
+httpx
 python-telegram-bot
