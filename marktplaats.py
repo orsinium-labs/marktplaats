@@ -32,7 +32,7 @@ def format_item(item: Item) -> str:
         str(price) + ' ' + item['priceInfo']['priceType'],
         item['date'],
         item['location']['cityName'],
-        'https://www.marktplaats.nl/' + item['vipUrl'],
+        'https://www.marktplaats.nl' + item['vipUrl'],
     ]
     return '\n'.join(lines)
 
@@ -58,7 +58,7 @@ def main() -> None:
         first_run = not cache_ids
         for game in config.games:
             for item in get_items(game):
-                iid = item['itemId']
+                iid = item['itemId'].strip()
                 if iid in cache_ids:
                     continue
                 cache_ids.add(iid)
