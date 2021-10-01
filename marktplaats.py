@@ -26,12 +26,12 @@ def get_items(game: str) -> List[Item]:
 
 
 def format_item(item: Item) -> str:
-    price = item['priceInfo']['priceCents'] / 100
+    price = item['priceInfo'].get('priceCents', 0) / 100
     lines = [
         item['title'],
-        str(price) + ' ' + item['priceInfo']['priceType'],
+        str(price) + ' ' + item['priceInfo'].get('priceType', ''),
         item['date'],
-        item['location']['cityName'],
+        item['location'].get('cityName', ''),
         'https://www.marktplaats.nl' + item['vipUrl'],
     ]
     return '\n'.join(lines)
